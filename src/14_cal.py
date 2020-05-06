@@ -30,3 +30,19 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+
+if len(sys.argv) >= 3:
+	sys.exit('Too many arguments!\nUsage: 14_cal.py [month] [year]')
+
+listy = [0, 1]
+for index in listy:
+	try:
+		listy[index] = sys.argv[index + 1]
+	except:
+		if index == 0:
+			listy[index] = datetime.now().month
+		else:
+			listy[index] = datetime.now().year
+
+listy.reverse()
+print(calendar.month(listy[0], listy[1]))
